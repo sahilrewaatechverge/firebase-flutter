@@ -15,25 +15,34 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
       ),
-      body: BlocListener<AuthenticationBloc,AuthenticationState>(
-        listener: (context, state){
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SignInPage()), (route) => false);
+      body: BlocListener<AuthenticationBloc, AuthenticationState>(
+        listener: (context, state) {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const SignInPage()),
+              (route) => false);
         },
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(user!.email.toString()),
-              ElevatedButton(onPressed: (){
-                context.read<AuthenticationBloc>().add(SignOut());
-              }, child: const Text("SignOut"))
-              
+              const SizedBox(height: 12,),
+              user!.photoURL != null ? Image.network(user!.photoURL.toString()): Container(),
+              const SizedBox(height: 12,),
+              user!.displayName != null ? Text(user!.displayName.toString()): Container(),
+              const SizedBox(height: 12,),
+              ElevatedButton(
+                  onPressed: () {
+                    context.read<AuthenticationBloc>().add(SignOut());
+                  },
+                  child: const Text("SignOut"))
             ],
           ),
         ),
