@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import '../repo/AuthRepository.dart';
+import '../repo/authrepository.dart';
 import 'authentication_event.dart';
 import 'authentication_state.dart';
 
@@ -17,6 +17,17 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         emit(AuthError(e.toString()));
         emit(UnAuthenticated());
       }    });
+
+    on<VerifyWithPhone>((event,emit) async {
+      emit(Loading());
+      try{
+        await authRepository.verifyWithPhone(phone: event.phone, context: event.context);
+        emit(Authenticated());
+      }catch (e){
+        emit(AuthError(e.toString()));
+        emit(UnAuthenticated());
+      }
+    });
 
     on<SingUpRequest>((event, emit) async {
       emit(Loading());

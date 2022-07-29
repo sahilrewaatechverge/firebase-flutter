@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter/bloc/authentication_bloc.dart';
 import 'package:firebase_flutter/homepage.dart';
-import 'package:firebase_flutter/repo/AuthRepository.dart';
+import 'package:firebase_flutter/phonelogin.dart';
+import 'package:firebase_flutter/repo/authrepository.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'signin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               if(snapshot.hasData) {
                 return const HomePage();
               }
-              return const SignInPage();
+              return const PhoneLogin();
             },
           )
         ),
