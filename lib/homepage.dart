@@ -14,7 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final  user = FirebaseAuth.instance.currentUser!;
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              user.phoneNumber.toString() !=  "null" ? Text(user.phoneNumber.toString()) :Text(user.email.toString()),
+              user.phoneNumber !=  null ? Text(user.phoneNumber.toString()) : Text(user.email.toString()),
               const SizedBox(height: 12,),
               user.photoURL != null ? Image.network(user.photoURL.toString()): Container(),
               const SizedBox(height: 12,),

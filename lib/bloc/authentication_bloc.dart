@@ -21,7 +21,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     on<VerifyWithPhone>((event,emit) async {
       emit(Loading());
       try{
-        await authRepository.verifyWithPhone(phone: event.phone, context: event.context);
+        await authRepository.verifyWithPhone(phone: event.phone);
         emit(Authenticated());
       }catch (e){
         emit(AuthError(e.toString()));

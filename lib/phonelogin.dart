@@ -17,6 +17,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
   final phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,11 +102,10 @@ class _PhoneLoginState extends State<PhoneLogin> {
     );
   }
 
-
   void authWithPhone(context) {
     if (formKey.currentState!.validate()) {
       BlocProvider.of<AuthenticationBloc>(context)
-          .add(VerifyWithPhone(phone: phoneController.text, context: context));
+          .add(VerifyWithPhone(phone: phoneController.text));
     }
   }
 }

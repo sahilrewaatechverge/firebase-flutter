@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 abstract class AuthenticationEvent extends Equatable {
   @override
@@ -15,9 +14,8 @@ class SingInRequest extends AuthenticationEvent {
 
 class VerifyWithPhone extends AuthenticationEvent {
   final String phone;
-  final BuildContext context;
 
-  VerifyWithPhone({required this.phone, required this.context});
+  VerifyWithPhone({required this.phone});
 }
 
 class SingUpRequest extends AuthenticationEvent {
