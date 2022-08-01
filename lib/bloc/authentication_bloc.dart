@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../repo/authrepository.dart';
 import 'authentication_event.dart';
 import 'authentication_state.dart';
@@ -21,13 +22,16 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     on<VerifyWithPhone>((event,emit) async {
       emit(Loading());
       try{
-        await authRepository.verifyWithPhone(phone: event.phone);
+        emit(Loading());
+        await authRepository.verifyWithPhone(verificationId: event.phone,smsCode: event.smsCode);
         emit(Authenticated());
       }catch (e){
         emit(AuthError(e.toString()));
         emit(UnAuthenticated());
       }
     });
+
+
 
     on<SingUpRequest>((event, emit) async {
       emit(Loading());

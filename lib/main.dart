@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter/bloc/authentication_bloc.dart';
-import 'package:firebase_flutter/homepage.dart';
-import 'package:firebase_flutter/phonelogin.dart';
+import 'package:firebase_flutter/screens/home/homepage.dart';
+import 'package:firebase_flutter/screens/phonelogin/phonelogin.dart';
 import 'package:firebase_flutter/repo/authrepository.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

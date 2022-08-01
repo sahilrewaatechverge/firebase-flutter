@@ -1,11 +1,11 @@
 import 'package:firebase_flutter/bloc/authentication_bloc.dart';
-import 'package:firebase_flutter/signup.dart';
+import 'package:firebase_flutter/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_flutter/bloc/authentication_event.dart';
 
-import 'bloc/authentication_state.dart';
-import 'homepage.dart';
+import '../../bloc/authentication_state.dart';
+import '../home/homepage.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
